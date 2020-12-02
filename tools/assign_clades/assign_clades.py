@@ -11,9 +11,8 @@ modified names.'''
 '''Author: Diane Eisler, Molecular Microbiology & Genomics, BCCDC Public Health Laboratory, Oct 2017'''
 
 import sys,string,os, time, Bio
-from Bio import Seq, SeqIO, SeqUtils, Alphabet, SeqRecord
+from Bio import Seq, SeqIO, SeqUtils, SeqRecord
 from Bio.SeqRecord import SeqRecord
-from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
 
 localtime = time.asctime(time.localtime(time.time())) #date and time of analysis
@@ -97,7 +96,7 @@ with open (inFileHandle2, 'r') as clade_file:
     instantiates as AA Sequence objects, with ppercase sequences'''
 with open(inFileHandle1,'r') as inFile:
     #read in Sequences from fasta file, uppercase and add to seqList
-    for record in SeqIO.parse(inFile, "fasta", alphabet=IUPAC.protein):
+    for record in SeqIO.parse(inFile, "fasta"):
         record = record.upper()
         seqList.append(record) #add Seq to list of Sequences
     print "\n%i flu HA sequences will be compared to current clade definitions..." % len(seqList)
